@@ -99,7 +99,10 @@ namespace TradeCalc
                 decimal profitPerSquare = (destinationList[index].LocalPrice - LocalTradeGoods[index].LocalPrice)
                     / effectiveSquares;
 
-                yield return new Profit() { Name = item.Name, ProfitPerSquare = profitPerSquare };
+                if (destinationList[index].LocalPrice > 0 && LocalTradeGoods[index].LocalPrice > 0 && profitPerSquare > 0)
+                {
+                    yield return new Profit() { Name = item.Name, ProfitPerSquare = profitPerSquare };
+                }
             }
         }
     }

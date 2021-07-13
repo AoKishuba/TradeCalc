@@ -24,11 +24,6 @@ namespace TradeCalc
 
             // Format ID to match columns
             ID = name;
-            for (int i = 0; i < 35 - name.Length - LocalPrice.ToString().Length; i++)
-            {
-                ID += " ";
-            }
-            ID += "0";
         }
 
         // Set at item creation
@@ -77,32 +72,24 @@ namespace TradeCalc
         static TradeGood BasFirstAidKit { get; } = new("Basic First Aid Kit", 2, 1, 76, 1);
         static TradeGood Bloodrum { get; } = new("Bloodrum", 9, 1, 1328, 1);
         static TradeGood Book { get; } = new("Book", 4, 4, 300, 1);
-        static TradeGood Bread { get; } = new("Bread", 6, 1, 488, 0.5m);
         static TradeGood BuildingMat { get; } = new("Building Material", 18, 1, 108, 2);
         static TradeGood Cactus { get; } = new("Cactus", 3, 1, 15, 1);
         static TradeGood CactusRum { get; } = new("Cactus Rum", 12, 1, 520, 1);
         static TradeGood Capacitor { get; } = new("Capacitor", 6, 1, 90, 1);
         static TradeGood CeramicBowl { get; } = new("Ceramic Bowl", 4, 1, 180, 1);
-        static TradeGood ChainmailSheets { get; } = new("Chainmail Scheets", 9, 1, 2527, 6);
-        static TradeGood Chewsticks { get; } = new("Chewsticks", 6, 1, 152, 0.5m);
-        static TradeGood CookedVegetables { get; } = new("Cooked Vegetables", 9, 1, 318, 1);
+        static TradeGood ChainmailSheets { get; } = new("Chainmail Sheets", 9, 1, 2527, 6);
         static TradeGood Copper { get; } = new("Copper", 6, 1, 180, 4);
         static TradeGood CopperAlloy { get; } = new("Copper Alloy Plates", 12, 1, 608, 2);
         static TradeGood Cotton { get; } = new("Cotton", 9, 1, 75, 2);
         static TradeGood CpuUnit { get; } = new("CPU Unit", 9, 1, 6000, 1);
         static TradeGood CrossbowParts { get; } = new("Crossbow Parts", 6, 1, 408, 4);
-        static TradeGood DriedFish { get; } = new("Dried Fish", 3, 1, 360, 1);
-        static TradeGood DriedMeat { get; } = new("Dried Meat", 4, 1, 78, 1);
-        static TradeGood Dustwich { get; } = new("Dustwich", 6, 1, 730, 1);
         static TradeGood Cup { get; } = new("Cup", 4, 1, 6, 1);
         static TradeGood ElectricalComponents { get; } = new("Electrical Components", 6, 1, 216, 1);
         static TradeGood EngineeringResearch { get; } = new("Engineering Research", 4, 4, 8000, 0);
         static TradeGood Fabrics { get; } = new("Fabrics", 6, 1, 63, 1);
-        static TradeGood Foodcube { get; } = new("Foodcube", 6, 1, 874, 1);
         static TradeGood Fuel { get; } = new("Fuel", 9, 1, 192, 1);
         static TradeGood Gears { get; } = new("Gears", 9, 1, 162, 1);
         static TradeGood GeneratorCore { get; } = new("Generator Core", 6, 1, 2755, 20);
-        static TradeGood Gohan { get; } = new("Gohan", 9, 1, 444, 1);
         static TradeGood GrandFish { get; } = new("Grand Fish", 6, 1, 360, 1);
         static TradeGood Greenfruit { get; } = new("Greenfruit", 9, 1, 30, 0.5m);
         static TradeGood Grog { get; } = new("Grog", 6, 1, 1155, 1);
@@ -114,7 +101,6 @@ namespace TradeCalc
         static TradeGood LanternOfRadiance { get; } = new("Lantern of Radiance", 2, 1, 90, 4);
         static TradeGood Leather { get; } = new("Leather", 6, 4, 156, 1);
         static TradeGood LuxuryGoods { get; } = new("Luxury Goods", 6, 1, 240, 1);
-        static TradeGood Meatwrap { get; } = new("Meatwrap", 6, 1, 658, 1);
         static TradeGood MedicalSupplies { get; } = new("Medical Supplies", 12, 1, 120, 1);
         static TradeGood Motor { get; } = new("Motor", 12, 1, 421, 1.5m);
         static TradeGood PearlCup { get; } = new("Pearl Cup", 4, 1, 240, 1);
@@ -123,11 +109,9 @@ namespace TradeCalc
         static TradeGood PearlVase { get; } = new("Pearl Vase", 12, 1, 450, 1);
         static TradeGood PowerCore { get; } = new("Power Core", 12, 1, 3000, 1);
         static TradeGood Press { get; } = new("Press", 6, 1, 324, 1);
-        static TradeGood RationPack { get; } = new("Ration Pack", 4, 1, 1143, 1);
         static TradeGood RawIron { get; } = new("Raw Iron", 6, 1, 90, 9);
         static TradeGood RawMeat { get; } = new("Raw Meat", 4, 1, 60, 1);
         static TradeGood RawStone { get; } = new("Raw Stone", 24, 1, 36, 4);
-        static TradeGood RiceBowl { get; } = new("Rice Bowl", 9, 1, 186, 1);
         static TradeGood Riceweed { get; } = new("Riceweed", 6, 1, 13, 0.5m);
         static TradeGood RoboticsComp { get; } = new("Robotics Components", 8, 1, 2838, 2);
         static TradeGood Sake { get; } = new("Sake", 6, 1, 428, 1);
@@ -143,93 +127,83 @@ namespace TradeCalc
         static TradeGood Thinfish { get; } = new("Thinfish", 3, 1, 360, 1);
         static TradeGood Tools { get; } = new("Tools", 6, 1, 240, 3);
         static TradeGood Water { get; } = new("Water", 25, 1, 25, 10);
-        static TradeGood WaterJug { get; } = new("Water Jug", 6, 1, 30, 1);
         static TradeGood Wheatstraw { get; } = new("Wheatstraw", 25, 1, 40, 1);
         static TradeGood Wrench { get; } = new("Wrench", 6, 1, 90, 1);
 
-        // List all items for reference
-        public static List<TradeGood> AllItems { get; } = new()
-       {
-            AdvFirstAidKit,
-            AdvSplintKit,
-            AnimalClaw,
-            AnimalHorn,
-            AnimalSkin,
-            AnimalTeeth,
-            ArmourPlating,
-            AuthSkeleRepKit,
-            BasFirstAidKit,
-            Bloodrum,
-            Book,
-            Bread,
-            BuildingMat,
-            Cactus,
-            CactusRum,
-            Capacitor,
-            CeramicBowl,
-            ChainmailSheets,
-            Chewsticks,
-            CookedVegetables,
-            Copper,
-            CopperAlloy,
-            Cotton,
-            CpuUnit,
-            CrossbowParts,
-            DriedFish,
-            DriedMeat,
-            Dustwich,
-            Cup,
-            ElectricalComponents,
-            EngineeringResearch,
-            Fabrics,
-            Foodcube,
-            Fuel,
-            Gears,
-            GeneratorCore,
-            Gohan,
-            GrandFish,
-            Greenfruit,
-            Grog,
-            Hacksaw,
-            Hashish,
-            Hemp,
-            Hinge,
-            IronPlates,
-            LanternOfRadiance,
-            Leather,
-            LuxuryGoods,
-            Meatwrap,
-            MedicalSupplies,
-            Motor,
-            PearlCup,
-            PearlSwordHolder,
-            PearlUrn,
-            PearlVase,
-            PowerCore,
-            Press,
-            RationPack,
-            RawIron,
-            RawMeat,
-            RawStone,
-            RiceBowl,
-            Riceweed,
-            RoboticsComp,
-            Sake,
-            SimpleRug,
-            SkeletonRepKit,
-            SleepingBag,
-            SplintKit,
-            SpringSteel,
-            StdFirstAidKit,
-            SteelBars,
-            Strawflour,
-            HolyFlame,
-            Thinfish,
-            Tools,
-            Water,
-            WaterJug,
-            Wheatstraw,
-            Wrench
+        // Backup list
+        public static List<TradeGood> AllItemsBackup { get; } = new()
+        {
+        AdvFirstAidKit,
+        AdvSplintKit,
+        AnimalClaw,
+        AnimalHorn,
+        AnimalSkin,
+        AnimalTeeth,
+        ArmourPlating,
+        AuthSkeleRepKit,
+        BasFirstAidKit,
+        Bloodrum,
+        Book,
+        BuildingMat,
+        Cactus,
+        CactusRum,
+        Capacitor,
+        CeramicBowl,
+        ChainmailSheets,
+        Copper,
+        CopperAlloy,
+        Cotton,
+        CpuUnit,
+        CrossbowParts,
+        Cup,
+        ElectricalComponents,
+        EngineeringResearch,
+        Fabrics,
+        Fuel,
+        Gears,
+        GeneratorCore,
+        GrandFish,
+        Greenfruit,
+        Grog,
+        Hacksaw,
+        Hashish,
+        Hemp,
+        Hinge,
+        IronPlates,
+        LanternOfRadiance,
+        Leather,
+        LuxuryGoods,
+        MedicalSupplies,
+        Motor,
+        PearlCup,
+        PearlSwordHolder,
+        PearlUrn,
+        PearlVase,
+        PowerCore,
+        Press,
+        RawIron,
+        RawMeat,
+        RawStone,
+        Riceweed,
+        RoboticsComp,
+        Sake,
+        SimpleRug,
+        SkeletonRepKit,
+        SleepingBag,
+        SplintKit,
+        SpringSteel,
+        StdFirstAidKit,
+        SteelBars,
+        Strawflour,
+        HolyFlame,
+        Thinfish,
+        Tools,
+        Water,
+        Wheatstraw,
+        Wrench
         };
+
+        // List all items for reference
+        public static List<TradeGood> AllItems { get; set; } = new();
     }
 }

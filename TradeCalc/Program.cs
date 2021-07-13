@@ -342,17 +342,25 @@ namespace TradeCalc
 
         static void Main()
         {
-            string FileName = "citylist.json";
-
+            string cityListFileName = "cityList.json";
+            string itemListFileName = "itemList.json";
+            JsonSerializerOptions itemOptions = new() { WriteIndented = true };
             Console.WriteLine("TradeCalc: A trade optimizer for Kenshi. Written by Ao Kishuba.\n");
 
-            if (!File.Exists(FileName))
+            if (!File.Exists(cityListFileName))
             {
-                Console.WriteLine(FileName + " not detected. Creating new file. Be sure to start by changing city name.");
+                Console.WriteLine(cityListFileName + " not detected. Creating new file. Be sure to start by changing city name.");
 
                 List<City> CityList = new();
                 CityList.Add(new City("New City"));
-                File.WriteAllText(FileName, JsonSerializer.Serialize(CityList));
+                File.WriteAllText(cityListFileName, JsonSerializer.Serialize(CityList));
+            }
+
+            if (!File.Exists(itemListFileName))
+            {
+                Console.WriteLine(itemListFileName + " not detected. Using default item list.");
+                File.WriteAllText(itemListFileName, JsonSerializer.Serialize(TradeGood.AllItemsBackup, itemOptions));
+                TradeGood.AllItems = JsonSerializer.Deserialize<List<TradeGood>>(File.ReadAllText(itemListFileName));
             }
 
             while (true)
@@ -369,23 +377,23 @@ namespace TradeCalc
                     }
                     else if (menuIndex == 0)
                     {
-                        AddCity(FileName);
+                        AddCity(cityListFileName);
                     }
                     else if (menuIndex == 1)
                     {
-                        DeleteCity(FileName);
+                        DeleteCity(cityListFileName);
                     }
                     else if (menuIndex == 2)
                     {
-                        UpdateName(FileName);
+                        UpdateName(cityListFileName);
                     }
                     else if (menuIndex == 3)
                     {
-                        SetLocalPrices(FileName);
+                        SetLocalPrices(cityListFileName);
                     }
                     else if (menuIndex == 4)
                     {
-                        GetProfitList(FileName);
+                        GetProfitList(cityListFileName);
                     }
                 }
                 else
