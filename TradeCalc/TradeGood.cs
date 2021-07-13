@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
 
 namespace TradeCalc
 {
@@ -16,7 +14,7 @@ namespace TradeCalc
         /// <param name="stackSize">How many of this item can be stacked in overlapping squares before a new stack is created</param>
         /// <param name="averagePrice">Average price</param>
         /// <param name="itemWeight">Weight in kg</param>
-        TradeGood(string name, int inventorySize, int stackSize, int averagePrice, decimal itemWeight)
+        public TradeGood(string name, int inventorySize, int stackSize, int averagePrice, decimal itemWeight)
         {
             Name = name;
             InventorySize = inventorySize;
@@ -37,8 +35,8 @@ namespace TradeCalc
         public string Name { get; }
         public int InventorySize { get; }
         public int StackSize { get; }
-        decimal ItemWeight { get; }
-        int AveragePrice { get; }
+        public decimal ItemWeight { get; }
+        public int AveragePrice { get; }
 
         // Set by user
         int _localPrice;
@@ -51,15 +49,16 @@ namespace TradeCalc
 
                 // Format ID to match columns
                 ID = Name;
-                for (int i = 0; i < 35 - Name.Length - LocalPrice.ToString().Length; i++)
+                for (int i = 0; i < 35 - Name.Length - _localPrice.ToString().Length; i++)
                 {
                     ID += " ";
                 }
-                ID += LocalPrice.ToString();
+                ID += _localPrice.ToString();
 
-                LocalMarkup = (decimal)LocalPrice / AveragePrice;
+                LocalMarkup = (decimal)_localPrice / AveragePrice;
             }
         }
+
 
         // Calculated
         public decimal LocalMarkup { get; set; }
@@ -149,7 +148,7 @@ namespace TradeCalc
         static TradeGood Wrench { get; } = new("Wrench", 6, 1, 90, 1);
 
         // List all items for reference
-        public static TradeGood[] AllItems { get; } =
+        public static List<TradeGood> AllItems { get; } = new()
        {
             AdvFirstAidKit,
             AdvSplintKit,
