@@ -1,0 +1,71 @@
+TradeCalc: A trade optimizer for Kenshi. Written by Ao Kishuba (@Ao Kishuba#9920 on the official Kenshi Discord, or /u/AoKishuba on Reddit).
+
+Installation
+  From .zip
+    1. Navigate to the Google Drive shared folder at https://drive.google.com/drive/folders/1whPCm53w9wxb-pOZkJ5pr-1WxlUTJAje?usp=sharing
+    2. Right-click “TradeCalc.zip” and select “Download”
+    3. Save the .zip in an accessible location
+    4. Navigate to the newly-saved .zip file in your computer’s file explorer
+    5. Extract the zipped file to an accessible location
+    6. Open the new folder and run “TradeCalc.exe”
+
+  From Source
+   1. Navigate to the GitHub repository at https://github.com/AoKishuba/TradeCalc
+   2. Click the “↓ Code” button and select an option to download the source code
+  
+Instructions
+  Setup and First Run
+    ItemList
+        Skip to “CityList” if you are not using any mods which add items to the game.
+
+        By default, the optimizer uses a list of trade goods from the vanilla game. Each item included on the list fulfils the following criteria:
+     - The item sells for full price (excludes food items, weapons, and armor)
+     - The item can be bought from a vendor (excludes artifacts, loot from ruins, &c)
+
+        If you would like to add items – for example, from a mod – it is crucial that you do the following before doing anything else with the optimizer:
+    1. Run TradeCalc.exe once. The first time the program is run, it should display the message “itemList.json not detected. Using default item list.”
+    2. Close TradeCalc.exe
+    3. In the TradeCalc directory, open the file “itemList.json”
+    4. Add the item
+      a. Name: Display name as shown in-game, IN QUOTES
+      b. InventorySize: Width * Height, in inventory squares
+      c. StackSize: Number of items which can fit into the same space
+      d. ItemWeight: Weight in kg
+      e. LocalPrice: 0
+      f. LocalMarkup: 0
+      g. ID: Exactly the same as the Name property above
+        As an example, here is the entry for the vanilla Advanced First Aid Kit:
+     {
+       "Name": "Advanced First Aid Kit",
+       "InventorySize": 6,
+       "StackSize": 1,
+       "ItemWeight": 2,
+       "AveragePrice": 265,
+       "LocalPrice": 0,
+       "LocalMarkup": 0,
+       "ID": "Advanced First Aid Kit"
+     },
+
+    5. Save itemList.json and restart TradeCalc.exe
+    6. Delete the default city “New City” which was created the first time TradeCalc was started
+
+    Your items should appear in any cities you create from this point forward. Note that items are not added retroactively: if you add any items to itemList.json later
+    on, you will have to delete and re-add any already-existing cities and update all prices for those cities.
+    
+  CityList
+    When the optimizer is run for the first time, no “cityList.json” file will be present. This is expected; the optimizer will respond by creating a new file with a
+    blank city named “New City” and instructing the user to rename the city. See below for how to do this.
+
+Menu Options
+  0: Add city
+      Adds a city with the given name. Cities cannot have duplicate names.
+  1: Delete city
+      Deletes the selected city. Enter ‘none’ to exit without deleting anything.
+  2: Change name
+      Renames the selected city with the given name. Cities cannot have duplicate names.
+  3: Edit price list
+      Brings up the trade good list of the selected city for updating.
+  4: Optimize trade
+      Compares prices in the given source and destination cities and shows the profit per inventory square of every item. Note that only positive profits are shown,
+      and only for items which have non-zero prices in both the source and destination cities (items with prices of 0 are assumed to have simply not been updated by
+      the user).
